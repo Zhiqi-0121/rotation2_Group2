@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=300g
+#SBATCH --time=48:00:00
+#SBATCH --job-name=pass_annotation
+#SBATCH --output=/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/bashoutput/trim_galore.out
+#SBATCH --error=/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/bashoutput/trim_galore.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=mbxzy2@nottingham.ac.uk
+
+source $HOME/.bash_profile
+
+conda activate samtools
+
+samtools view -S -b CSFtrimmed.sam > CSFtrimmed.bam
+
+conda deactivete
+

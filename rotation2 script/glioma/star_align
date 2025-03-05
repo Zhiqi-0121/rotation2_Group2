@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#SBATCH --partition=defq
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=100G
+#SBATCH --time=06:00:00
+#SBATCH --job-name=star_align
+#SBATCH --output=/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/bashoutput/slurm-%x-%j.out
+#SBATCH --error=/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/bashoutput/slurm-%x-%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=alyjh38@nottingham.ac.uk
+
+source $HOME/.bash_profile
+
+conda activate STAR
+
+conda install star
+
+GENOME_DIR="/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/glioma"
+READS_DIR="/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/glioma/ERR1404775_1.fastq.gz""
+OUTPUT_DIR="/share/BioinfMSc/Bill_resources/Tbrucei/fastq/Group2/output"
+THREADS=8
+
+SAMPLES=$(ls $READS_DIR/*_1.fastq.gz | sed 's/_1.fastq.gz//' | xargs -n 1basename)
+
+for SAMPLE in $SAMPLES; do
+    echo "Processing: $BASENAME"
+
+    STAR --runThreadN $THREADS \
+         --genomeDir $GENOME_DIR \
+         --readFilesIn "$READS_DIR/${SAMPLE}_1.fastq.gz" "$READS_DIR/${SAMPLE}_2.fastq.gz" \
+         --readFilesCommand zcat \
+         --outFileNamePrefix "$OUTPUT_DIR/${BASENAME}_" \
+         --quantMode GeneCounts \
+         --outSAMtype BAM SortedByCoordinate
+
+   echo "Finished: $BASENAME"
+done
+
+conda deactivate
+
+echo "Comlpleted"

@@ -16,6 +16,6 @@ source $HOME/.bash_profile
 
 conda activate htseq
 
-python -m HTSeq.scripts.count -a 10 -t exon CSF1trimmed.sam CSF1trimmed.sam CSF1trimmed.sam CSF1trimmed.sam CSF1trimmed.sam TriTrypDB-68_TbruceiTREU927.gff > CSF_merged.txt
+python -m HTSeq.scripts.count -a 10 -t exon CSF1trimmed.sam CSF2trimmed.sam CSF3trimmed.sam CSF4trimmed.sam  TriTrypDB-68_TbruceiTREU927.gff > CSF_merged.txt
 
 conda deactivate

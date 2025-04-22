@@ -28,3 +28,9 @@ Project 2: Differential Gene Expression in Human Glioma Tissue vs Glioma Cell Li
   Visualize and interpret the results
 
 Software and tools
+ STAR (v2.7.9a)
+ htseq-count (v0.11.2)
+ DESeq2 (v1.34.0)
+ IGV (v2.18.2)
+ SeqMonk (v1.45.0)
+ RStudio (v2023.03.0)

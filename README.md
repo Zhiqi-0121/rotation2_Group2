@@ -21,10 +21,10 @@ This project investigates differential gene expression across various biological
   - Generate a clustered heatmap and PCA plot to evaluate sample quality
 
 ### Project 2: Differential Gene Expression in Human Glioma Tissue vs Glioma Cell Lines
-1.**Download Reference Genome**: Obtain the GRCh38 human genome and annotation (GTF format) from Ensembl.
-2.**Build Genome Index**: Use STAR to build an index for the reference genome.
-3.**Align Samples**: Align each RNA-seq sample to the genome using STAR, and output gene count files (ReadsPerGene.out.tab).
-4.**Differential Expression Analysis**:
+1. **Download Reference Genome**: Obtain the GRCh38 human genome and annotation (GTF format) from Ensembl.
+2. **Build Genome Index**: Use STAR to build an index for the reference genome.
+3. **Align Samples**: Align each RNA-seq sample to the genome using STAR, and output gene count files (ReadsPerGene.out.tab).
+4. **Differential Expression Analysis**:
   - Format the expression data as a count matrix
   - Use DESeq2 in R (via DESeqDataSetFromMatrix) to perform differential analysis
   - Visualize and interpret the results
